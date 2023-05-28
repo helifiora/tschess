@@ -12,7 +12,7 @@ import {
   tablePositionGenerator,
   validPosition,
 } from "src/board/table.ts";
-import { Position } from "../../src/position.ts";
+import { pos } from "src/position.ts";
 
 test("Should clone all table and pieces", () => {
   const table = createEmptyTable();
@@ -70,7 +70,7 @@ test("Should generate every position", () => {
   const positions = new Set<string>();
   for (let y = tableMinValue; y <= tableMaxValue; y++) {
     for (let x = tableMinValue; x <= tableMaxValue; x++) {
-      positions.add(new Position(x, y).toString());
+      positions.add(pos(x, y).toString());
     }
   }
 
@@ -97,10 +97,10 @@ test("Should generate only pieces in the board (with position)", () => {
 
   const expectedPieces = new Set([ref1, ref2, ref3, ref4]);
   const expectedPositions = new Set([
-    new Position(0, 0).toString(),
-    new Position(0, 1).toString(),
-    new Position(0, 2).toString(),
-    new Position(0, 5).toString(),
+    pos(0, 0).toString(),
+    pos(0, 1).toString(),
+    pos(0, 2).toString(),
+    pos(0, 5).toString(),
   ]);
 
   for (const [piece, position] of tablePiecePositionGenerator(table)) {
