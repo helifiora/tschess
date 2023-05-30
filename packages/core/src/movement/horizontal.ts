@@ -3,7 +3,6 @@ import { pos, Position } from "src/position.ts";
 import { Piece } from "src/piece/piece.ts";
 import { Board } from "src/board/board.ts";
 import { CommonAcceptanceFn, commonGenerator } from "./common.ts";
-import { chain } from "src/chain.ts";
 
 type Options = {
   acceptanceFn?: CommonAcceptanceFn;
@@ -18,13 +17,14 @@ export class Horizontal extends Movement {
     this.take = options.take ?? null;
     this.acceptanceFn = options.acceptanceFn ?? null;
   }
-  [Symbol.iterator](): Iterator<Position> {
+  *[Symbol.iterator](): Iterator<Position> {
     const origin = this.board.getPiecePosition(this.piece);
     if (origin === null) {
       throw new Error("Piece is not on the board!");
     }
 
-    return chain([this.generateLeft(origin), this.generateRight(origin)]);
+    yield* this.generateLeft(origin);
+    yield* this.generateRight(origin);
   }
 
   private generateLeft(origin: Position): Generator<Position> {

@@ -15,6 +15,7 @@ function positionsToString(values: Position[]): string {
 
 test("Should generate diagonal line", () => {
   const board = Board.empty();
+  board.place(new King(Color.white), pos(0, 0));
   const result = positionsToString(Array.from(commonGenerator(board, pos(0, 0), pos(1, 1))));
   const expected = positionsToString([pos(1, 1), pos(2, 2), pos(3, 3), pos(4, 4), pos(5, 5), pos(6, 6), pos(7, 7)]);
   expect(result).toBe(expected);
@@ -31,6 +32,7 @@ test("Should generate diagonal line (with pieces)", () => {
 
 test("Should generate horizontal line", () => {
   const board = Board.empty();
+  board.place(new King(Color.white), pos(0, 0));
   const result = positionsToString(Array.from(commonGenerator(board, pos(0, 0), pos(1, 0))));
   const expected = positionsToString([pos(1, 0), pos(2, 0), pos(3, 0), pos(4, 0), pos(5, 0), pos(6, 0), pos(7, 0)]);
   expect(result).toBe(expected);
@@ -47,6 +49,7 @@ test("Should generate horizontal line (with pieces)", () => {
 
 test("Should generate vertical line", () => {
   const board = Board.empty();
+  board.place(new King(Color.white), pos(0, 0));
   const result = positionsToString(Array.from(commonGenerator(board, pos(0, 0), pos(0, 1))));
   const expected = positionsToString([pos(0, 1), pos(0, 2), pos(0, 3), pos(0, 4), pos(0, 5), pos(0, 6), pos(0, 7)]);
   expect(result).toBe(expected);
@@ -63,6 +66,8 @@ test("Should generate vertical line (with pieces)", () => {
 
 test("Should generate line and take 3", () => {
   const board = Board.empty();
+  board.place(new King(Color.white), pos(0, 0));
+
   const generator = commonGenerator(board, pos(0, 0), pos(1, 0), {
     take: 3,
   });

@@ -3,7 +3,6 @@ import { Position } from "../position.ts";
 import type { Piece } from "../piece/piece.ts";
 import type { Board } from "../board/board.ts";
 import { Direction } from "../direction.ts";
-import { chain } from "../chain.ts";
 import { type CommonAcceptanceFn, commonGenerator } from "./common.ts";
 
 type Options = {
@@ -24,7 +23,7 @@ export class Vertical extends Movement {
     this.take = options.take ?? null;
   }
 
-  [Symbol.iterator](): Iterator<Position> {
+  *[Symbol.iterator](): Iterator<Position> {
     const origin = this.board.getPiecePosition(this.piece);
     if (origin === null) {
       throw new Error("Piece is not on the board!");
@@ -32,11 +31,15 @@ export class Vertical extends Movement {
 
     switch (this.direction) {
       case Direction.top:
-        return this.generateTop(origin);
+        yield* this.generateTop(origin);
+        return;
       case Direction.bottom:
-        return this.generateBottom(origin);
+        yield* this.generateBottom(origin);
+        return;
       case Direction.both:
-        return chain([this.generateBottom(origin), this.generateTop(origin)]);
+        yield* this.generateTop(origin);
+        yield* this.generateBottom(origin);
+        return;
     }
   }
 

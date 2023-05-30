@@ -1,8 +1,8 @@
 import { expect, test } from "vitest";
 import { pos, Position } from "src/position.ts";
-import { Board } from "../../src/board/mod.ts";
-import { Knight } from "../../src/piece/knight.ts";
-import { Color } from "../../src/color.ts";
+import { Board } from "src/board/mod.ts";
+import { Knight } from "src/piece/knight.ts";
+import { Color } from "src/color.ts";
 
 function positionsToString(values: Position[]): string {
   return values

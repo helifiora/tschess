@@ -4,14 +4,32 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: table and board implementation and test">
+    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: create all pieces subclasses and tests">
+      <change afterPath="$PROJECT_DIR$/packages/core/src/check.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/knight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/knight.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/mod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/mod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/board/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/board.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/chain.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/chain.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/direction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/direction.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/common.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/mod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/mod.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/bishop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/bishop.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/king.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/king.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/position.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/position.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/rook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/rook.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -61,43 +79,7 @@
       <recent name="C:\Users\helif\Labs\tschess\packages\core\src" />
     </key>
   </component>
-  <component name="RunManager" selected="Vitest.knight.spec.ts">
-    <configuration name="Should get movements when knight is in middle corner position [%s]" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/packages/core" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" />
-      <test-names>
-        <test-name value="Should get movements when knight is in middle corner position [%s]" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Should get movements when knight is in middle corner position" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/packages/core" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" />
-      <test-names>
-        <test-name value="Should get movements when knight is in middle corner position" />
-      </test-names>
-      <method v="2" />
-    </configuration>
-    <configuration name="Should get movements when knight is in middle corner position. %s" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/packages/core" />
-      <envs />
-      <scope-kind value="TEST" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" />
-      <test-names>
-        <test-name value="Should get movements when knight is in middle corner position. %s" />
-      </test-names>
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="Vitest.Tests in test\">
     <configuration name="Tests in test\" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -107,22 +89,49 @@
       <test-directory value="$PROJECT_DIR$/packages/core/test" />
       <method v="2" />
     </configuration>
-    <configuration name="knight.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="bishop.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="king.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/packages/core" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="pawn.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/packages/core" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" />
+      <method v="2" />
+    </configuration>
+    <configuration name="rook.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/packages/core" />
+      <envs />
+      <scope-kind value="TEST_FILE" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Vitest.knight.spec.ts" />
-        <item itemvalue="Vitest.Should get movements when knight is in middle corner position. %s" />
-        <item itemvalue="Vitest.Should get movements when knight is in middle corner position [%s]" />
-        <item itemvalue="Vitest.Should get movements when knight is in middle corner position" />
         <item itemvalue="Vitest.Tests in test\" />
+        <item itemvalue="Vitest.king.spec.ts" />
+        <item itemvalue="Vitest.pawn.spec.ts" />
+        <item itemvalue="Vitest.bishop.spec.ts" />
+        <item itemvalue="Vitest.rook.spec.ts" />
       </list>
     </recent_temporary>
   </component>
@@ -143,7 +152,10 @@
       <workItem from="1685099284900" duration="5227000" />
       <workItem from="1685113259207" duration="1012000" />
       <workItem from="1685134706704" duration="1099000" />
-      <workItem from="1685302571016" duration="1844000" />
+      <workItem from="1685302571016" duration="2456000" />
+      <workItem from="1685324808049" duration="436000" />
+      <workItem from="1685376454198" duration="12144000" />
+      <workItem from="1685414150645" duration="78000" />
     </task>
     <task id="LOCAL-00001" summary="feat: table and board implementation and test">
       <option name="closed" value="true" />
@@ -153,7 +165,15 @@
       <option name="project" value="LOCAL" />
       <updated>1685045438116</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: create pieces subclasses and implement knight moves and tests">
+      <option name="closed" value="true" />
+      <created>1685309089579</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1685309089579</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -172,6 +192,8 @@
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: table and board implementation and test" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: table and board implementation and test" />
+    <MESSAGE value="feat: create pieces subclasses and implement knight moves and tests" />
+    <MESSAGE value="feat: create all pieces subclasses and tests" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: create all pieces subclasses and tests" />
   </component>
 </project>

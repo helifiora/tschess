@@ -11,7 +11,7 @@ import type { Position } from "src/position.ts";
 import { Color } from "src/color.ts";
 import { filter } from "src/generator.ts";
 import { type Piece, King } from "src/piece/mod.ts";
-import { BoardInvalidPosition, BoardMultipleKingFound, BoardNoKingFound } from "./errors.ts";
+import { BoardInvalidPosition, BoardMultipleKingFound } from "./errors.ts";
 
 export class Board {
   private readonly _table: Table;
@@ -34,12 +34,12 @@ export class Board {
     return this._table[position.y][position.x];
   }
 
-  getKing(color: Color): King {
-    const isTeamKing = (piece: Piece) => piece instanceof King && piece.color == color;
+  getKing(color: Color): King | null {
+    const isTeamKing = (piece: Piece) => piece instanceof King && piece.color === color;
 
-    const result = Array.from(filter(this.pieceGenerator, isTeamKing));
+    const result = Array.from(filter(this.pieceGenerator, isTeamKing)) as King[];
     if (result.length === 0) {
-      throw new BoardNoKingFound();
+      return null;
     } else if (result.length > 1) {
       throw new BoardMultipleKingFound(result.length);
     }

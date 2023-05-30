@@ -4,8 +4,9 @@ import { invalidPosition } from "../board/table.ts";
 import { MovementStatus } from "./movement.ts";
 import type { Piece } from "../piece/piece.ts";
 
-type PiecePosition = { piece: Piece | null; position: Position };
-export type CommonAcceptanceFn = (board: Board, origin: PiecePosition, target: PiecePosition) => MovementStatus;
+type PieceOrigin = { piece: Piece; position: Position };
+type PieceTarget = { piece: Piece | null; position: Position };
+export type CommonAcceptanceFn = (board: Board, origin: PieceOrigin, target: PieceTarget) => MovementStatus;
 interface Options {
   take?: number | null;
   acceptanceFn?: CommonAcceptanceFn | null;
@@ -31,6 +32,10 @@ export function* commonGenerator(
     }
 
     const originPiece = board.get(origin);
+    if (originPiece === null) {
+      throw new Error("Origin has no piece!");
+    }
+
     const targetPiece = board.get(current);
 
     const movementStatus = acceptanceFn(
@@ -55,7 +60,7 @@ function hasTakenAllPieces(take: number | null, count: number): boolean {
   return take !== null && take < count;
 }
 
-function defaultAcceptance(board: Board, origin: PiecePosition, target: PiecePosition): MovementStatus {
+function defaultAcceptance(board: Board, origin: PieceTarget, target: PieceTarget): MovementStatus {
   if (origin.piece === null || target.piece === null) {
     return MovementStatus.next;
   }
