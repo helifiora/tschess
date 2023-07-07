@@ -1,51 +1,44 @@
 import { Piece } from "./piece.ts";
-import type { Board } from "src/board/mod.ts";
-import type { Position } from "src/position.ts";
+import { createMovementBuilder } from "../movement/builder.ts";
 import { CommonAcceptanceFn } from "../movement/common.ts";
 import { MovementStatus } from "../movement/movement.ts";
-import { Horizontal } from "../movement/horizontal.ts";
-import { Vertical } from "../movement/vertical.ts";
-import { Diagonal } from "../movement/diagonal.ts";
-import { chain } from "../chain.ts";
-import { isInCheck } from "../check.ts";
+import type { Position } from "../position.ts";
+import type { Board } from "../board/board.ts";
 
 export class King extends Piece {
-  private recursive = true;
-
-  movements(board: Board): Iterable<Position> {
-    const options = {
-      take: 1,
-      acceptanceFn: this.recursive ? King.acceptance : undefined,
-    };
-
-    const horizontal = new Horizontal(this, board, options);
-    const vertical = new Vertical(this, board, options);
-    const diagonal = new Diagonal(this, board, options);
-
-    return chain([horizontal, vertical, diagonal]);
-  }
+  #recursive = true;
 
   clone(): King {
-    return new King(this.color);
+    const cloned = new King(this);
+    cloned.#recursive = false;
+    return cloned;
   }
 
-  changeRecursiveTo(value: boolean): void {
-    this.recursive = value;
+  movements(board: Board): Iterable<Position> {
+    const acceptanceFn = this.#recursive ? this.#acceptance : undefined;
+    return createMovementBuilder(this)
+      .addHorizontal({ take: 1, acceptanceFn })
+      .addVertical({ take: 1, acceptanceFn })
+      .addDiagonal({ take: 1, acceptanceFn })
+      .build(board);
   }
 
-  private static acceptance: CommonAcceptanceFn = (board, origin, target) => {
+  #acceptance: CommonAcceptanceFn = (board, origin, target) => {
     if (target.piece && target.piece.color === origin.piece.color) {
       return MovementStatus.stop;
     }
 
-    const boardClone = board.clone();
-    const king = boardClone.getKing(origin.piece.color)!;
-    boardClone.place(king, target.position.clone());
-
-    if (isInCheck(boardClone, king.color, target.position)) {
+    if (this.#canMoveCauseCheck(board, target.position)) {
       return MovementStatus.stop;
     }
 
     return MovementStatus.next;
+  };
+
+  #canMoveCauseCheck = (board: Board, target: Position): boolean => {
+    const cloned = board.clone();
+    const clonedKing = cloned.get(this.position)!;
+    cloned.move(clonedKing, target);
+    return cloned.isPieceInEnemyMoves(clonedKing);
   };
 }

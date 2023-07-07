@@ -1,55 +1,49 @@
 import { expect, test } from "vitest";
 import { Knight, King } from "src/piece/mod.ts";
 import { Color } from "src/color.ts";
-import {
-  cloneTable,
-  createEmptyTable,
-  invalidPosition,
-  tableMaxValue,
-  tableMinValue,
-  tablePieceGenerator,
-  tablePiecePositionGenerator,
-  tablePositionGenerator,
-  validPosition,
-} from "src/board/table.ts";
+import { Table } from "src/board/table.ts";
 import { pos } from "src/position.ts";
 
 test("Should clone all table and pieces", () => {
-  const table = createEmptyTable();
+  const table = Table.empty();
   const ref1 = new Knight(Color.black);
   const ref2 = new Knight(Color.white);
   const ref3 = new King(Color.white);
   const ref4 = new King(Color.black);
-  table[1][2] = ref1;
-  table[1][3] = ref2;
-  table[1][4] = ref3;
-  table[1][5] = ref4;
+  table.put(ref1, pos(2, 1));
+  ref1.position = pos(2, 1);
+  table.put(ref2, pos(3, 1));
+  ref2.position = pos(3, 1);
+  table.put(ref3, pos(4, 1));
+  ref3.position = pos(4, 1);
+  table.put(ref4, pos(5, 1));
+  ref4.position = pos(5, 1);
 
-  const clone = cloneTable(table);
+  const clone = table.clone();
   expect(clone).not.toBe(table);
-  expect(clone[1][2]).not.toBeNull();
-  expect(clone[1][3]).not.toBeNull();
-  expect(clone[1][4]).not.toBeNull();
-  expect(clone[1][5]).not.toBeNull();
-  expect(clone[1][2]).not.toBe(ref1);
-  expect(clone[1][3]).not.toBe(ref2);
-  expect(clone[1][4]).not.toBe(ref3);
-  expect(clone[1][5]).not.toBe(ref4);
+  expect(clone.get(pos(2, 1))).not.toBeNull();
+  expect(clone.get(pos(3, 1))).not.toBeNull();
+  expect(clone.get(pos(4, 1))).not.toBeNull();
+  expect(clone.get(pos(5, 1))).not.toBeNull();
+  expect(clone.get(pos(2, 1))).not.toBe(ref1);
+  expect(clone.get(pos(3, 1))).not.toBe(ref2);
+  expect(clone.get(pos(4, 1))).not.toBe(ref3);
+  expect(clone.get(pos(5, 1))).not.toBe(ref4);
 });
 
 test("Should create an empty table", () => {
-  const table = createEmptyTable();
-  for (let y = tableMinValue; y <= tableMaxValue; y++) {
-    for (let x = tableMinValue; x <= tableMaxValue; x++) {
-      expect(table[y][x]).toBeNull();
+  const table = Table.empty();
+  for (let y = Table.minValue; y <= Table.maxValue; y++) {
+    for (let x = Table.minValue; x <= Table.maxValue; x++) {
+      expect(table.get(pos(x, y))).toBeNull();
     }
   }
 });
 
 test("Should verify valid position", () => {
-  for (let y = tableMinValue; y <= tableMaxValue; y++) {
-    for (let x = tableMinValue; x <= tableMaxValue; x++) {
-      expect(validPosition(x, y)).toBe(true);
+  for (let y = Table.minValue; y <= Table.maxValue; y++) {
+    for (let x = Table.minValue; x <= Table.maxValue; x++) {
+      expect(Table.isValid(x, y)).toBe(true);
     }
   }
 });
@@ -61,20 +55,21 @@ test("Should verify invalid position", () => {
     [0, -1],
     [0, 8],
   ];
+
   for (const [x, y] of values) {
-    expect(invalidPosition(x, y)).toBe(true);
+    expect(Table.isInvalid(x, y)).toBe(true);
   }
 });
 
 test("Should generate every position", () => {
   const positions = new Set<string>();
-  for (let y = tableMinValue; y <= tableMaxValue; y++) {
-    for (let x = tableMinValue; x <= tableMaxValue; x++) {
+  for (let y = Table.minValue; y <= Table.maxValue; y++) {
+    for (let x = Table.minValue; x <= Table.maxValue; x++) {
       positions.add(pos(x, y).toString());
     }
   }
 
-  for (const item of tablePositionGenerator()) {
+  for (const item of Table.generatePosition()) {
     if (positions.has(item.toString())) {
       positions.delete(item.toString());
     }
@@ -84,16 +79,20 @@ test("Should generate every position", () => {
 });
 
 test("Should generate only pieces in the board (with position)", () => {
-  const table = createEmptyTable();
+  const table = Table.empty();
   const ref1 = new King(Color.white);
   const ref2 = new Knight(Color.white);
   const ref3 = new King(Color.black);
   const ref4 = new Knight(Color.black);
 
-  table[0][0] = ref1;
-  table[1][0] = ref2;
-  table[2][0] = ref3;
-  table[5][0] = ref4;
+  table.put(ref1, pos(0, 0));
+  ref1.position = pos(0, 2);
+  table.put(ref2, pos(0, 1));
+  ref2.position = pos(0, 1);
+  table.put(ref3, pos(0, 2));
+  ref3.position = pos(0, 2);
+  table.put(ref4, pos(0, 5));
+  ref4.position = pos(0, 5);
 
   const expectedPieces = new Set([ref1, ref2, ref3, ref4]);
   const expectedPositions = new Set([
@@ -103,27 +102,31 @@ test("Should generate only pieces in the board (with position)", () => {
     pos(0, 5).toString(),
   ]);
 
-  for (const [piece, position] of tablePiecePositionGenerator(table)) {
+  for (const piece of table.generatePiece()) {
     expect(expectedPieces.has(piece)).toBe(true);
-    expect(expectedPositions.has(position.toString())).toBe(true);
+    expect(expectedPositions.has(piece.position.toString())).toBe(true);
   }
 });
 
 test("Should generate only pieces in the board", () => {
-  const table = createEmptyTable();
+  const table = Table.empty();
   const ref1 = new King(Color.white);
   const ref2 = new Knight(Color.white);
   const ref3 = new King(Color.black);
   const ref4 = new Knight(Color.black);
 
-  table[0][0] = ref1;
-  table[1][0] = ref2;
-  table[2][0] = ref3;
-  table[5][0] = ref4;
+  table.put(ref1, pos(0, 0));
+  ref1.position = pos(0, 0);
+  table.put(ref2, pos(1, 0));
+  ref2.position = pos(1, 0);
+  table.put(ref3, pos(2, 0));
+  ref3.position = pos(2, 0);
+  table.put(ref4, pos(5, 0));
+  ref4.position = pos(5, 0);
 
   const expectedPieces = new Set([ref1, ref2, ref3, ref4]);
 
-  for (const piece of tablePieceGenerator(table)) {
+  for (const piece of table.generatePiece()) {
     expect(expectedPieces.has(piece)).toBe(true);
   }
 });

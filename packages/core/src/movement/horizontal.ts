@@ -1,43 +1,27 @@
 import { Movement } from "./movement.ts";
-import { pos, Position } from "src/position.ts";
+import { Position } from "src/position.ts";
 import { Piece } from "src/piece/piece.ts";
-import { Board } from "src/board/board.ts";
-import { CommonAcceptanceFn, commonGenerator } from "./common.ts";
+import { CommonAcceptanceFn, commonGenerator, CommonGeneratorOptions } from "./common.ts";
+import { Board } from "../board/board.ts";
 
-type Options = {
+export type HorizontalOptions = {
   acceptanceFn?: CommonAcceptanceFn;
   take?: number;
 };
 
 export class Horizontal extends Movement {
-  private readonly take: number | null;
-  private readonly acceptanceFn: CommonAcceptanceFn | null;
-  constructor(piece: Piece, board: Board, options: Options = {}) {
+  readonly #options: CommonGeneratorOptions;
+
+  constructor(piece: Piece, board: Board, options: HorizontalOptions = {}) {
     super(piece, board);
-    this.take = options.take ?? null;
-    this.acceptanceFn = options.acceptanceFn ?? null;
+    this.#options = { acceptanceFn: options.acceptanceFn, take: options.take };
   }
   *[Symbol.iterator](): Iterator<Position> {
-    const origin = this.board.getPiecePosition(this.piece);
-    if (origin === null) {
-      throw new Error("Piece is not on the board!");
-    }
-
-    yield* this.generateLeft(origin);
-    yield* this.generateRight(origin);
+    yield* this.#generateLeft();
+    yield* this.#generateRight();
   }
 
-  private generateLeft(origin: Position): Generator<Position> {
-    return commonGenerator(this.board, origin, pos(-1, 0), {
-      acceptanceFn: this.acceptanceFn,
-      take: this.take,
-    });
-  }
+  #generateLeft = () => commonGenerator(this.board, this.piece, [-1, 0], this.#options);
 
-  private generateRight(origin: Position): Generator<Position> {
-    return commonGenerator(this.board, origin, pos(1, 0), {
-      acceptanceFn: this.acceptanceFn,
-      take: this.take,
-    });
-  }
+  #generateRight = () => commonGenerator(this.board, this.piece, [1, 0], this.#options);
 }

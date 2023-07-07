@@ -1,46 +1,48 @@
-import { Board } from "../board/board.ts";
 import { Position } from "../position.ts";
-import { invalidPosition } from "../board/table.ts";
 import { MovementStatus } from "./movement.ts";
+import type { Board } from "../board/board.ts";
 import type { Piece } from "../piece/piece.ts";
 
 type PieceOrigin = { piece: Piece; position: Position };
 type PieceTarget = { piece: Piece | null; position: Position };
-export type CommonAcceptanceFn = (board: Board, origin: PieceOrigin, target: PieceTarget) => MovementStatus;
-interface Options {
+export type CommonAcceptanceFn = (
+  board: Board,
+  origin: PieceOrigin,
+  target: PieceTarget
+) => MovementStatus;
+
+export interface CommonGeneratorOptions {
   take?: number | null;
   acceptanceFn?: CommonAcceptanceFn | null;
 }
 
 export function* commonGenerator(
   board: Board,
-  origin: Position,
-  increment: Position,
-  options: Options = {}
+  origin: Piece,
+  increment: [x: number, y: number],
+  options: CommonGeneratorOptions = {}
 ): Generator<Position> {
   const acceptanceFn = options.acceptanceFn ?? defaultAcceptance;
   const take = options.take ?? null;
-  const current = origin.clone();
-  let count = 0;
+  const current = origin.position;
+  let count = 1;
 
   while (true) {
-    current.add(increment);
-    count += 1;
-
-    if (invalidPosition(current.x, current.y) || hasTakenAllPieces(take, count)) {
+    if (hasTakenAllPieces(take, count)) {
       return;
     }
 
-    const originPiece = board.get(origin);
-    if (originPiece === null) {
-      throw new Error("Origin has no piece!");
+    try {
+      current.add(increment[0], increment[1]);
+    } catch (e) {
+      return;
     }
 
     const targetPiece = board.get(current);
 
     const movementStatus = acceptanceFn(
       board,
-      { piece: originPiece, position: origin },
+      { piece: origin, position: origin.position },
       { piece: targetPiece, position: current }
     );
 
@@ -49,6 +51,7 @@ export function* commonGenerator(
     }
 
     yield current.clone();
+    count += 1;
 
     if (movementStatus === MovementStatus.last) {
       return;
@@ -60,7 +63,11 @@ function hasTakenAllPieces(take: number | null, count: number): boolean {
   return take !== null && take < count;
 }
 
-function defaultAcceptance(board: Board, origin: PieceTarget, target: PieceTarget): MovementStatus {
+function defaultAcceptance(
+  _: Board,
+  origin: PieceTarget,
+  target: PieceTarget
+): MovementStatus {
   if (origin.piece === null || target.piece === null) {
     return MovementStatus.next;
   }

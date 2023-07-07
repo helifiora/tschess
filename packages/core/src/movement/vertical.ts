@@ -1,59 +1,50 @@
 import { Movement } from "./movement.ts";
-import { Position } from "../position.ts";
-import type { Piece } from "../piece/piece.ts";
-import type { Board } from "../board/board.ts";
 import { Direction } from "../direction.ts";
-import { type CommonAcceptanceFn, commonGenerator } from "./common.ts";
+import { Position } from "../position.ts";
+import { Piece } from "../piece/piece.ts";
+import {
+  type CommonAcceptanceFn,
+  commonGenerator,
+  CommonGeneratorOptions,
+} from "./common.ts";
+import type { Board } from "../board/board.ts";
 
-type Options = {
+export type VerticalOptions = {
   direction?: Direction;
   acceptanceFn?: CommonAcceptanceFn;
   take?: number;
 };
 
 export class Vertical extends Movement {
-  private readonly direction: Direction;
-  private readonly acceptanceFn: CommonAcceptanceFn | null;
-  private readonly take: number | null;
+  readonly #direction: Direction;
+  readonly #options: CommonGeneratorOptions;
 
-  constructor(piece: Piece, board: Board, options: Options = {}) {
+  constructor(piece: Piece, board: Board, options: VerticalOptions = {}) {
     super(piece, board);
-    this.direction = options.direction ?? Direction.both;
-    this.acceptanceFn = options.acceptanceFn ?? null;
-    this.take = options.take ?? null;
+    this.#options = { acceptanceFn: options.acceptanceFn, take: options.take };
+    this.#direction = options.direction ?? Direction.both;
   }
 
   *[Symbol.iterator](): Iterator<Position> {
-    const origin = this.board.getPiecePosition(this.piece);
-    if (origin === null) {
-      throw new Error("Piece is not on the board!");
-    }
-
-    switch (this.direction) {
+    switch (this.#direction) {
       case Direction.top:
-        yield* this.generateTop(origin);
+        yield* this.#generateTop();
         return;
       case Direction.bottom:
-        yield* this.generateBottom(origin);
+        yield* this.#generateBottom();
         return;
       case Direction.both:
-        yield* this.generateTop(origin);
-        yield* this.generateBottom(origin);
+        yield* this.#generateTop();
+        yield* this.#generateBottom();
         return;
     }
   }
 
-  private generateTop(origin: Position): Generator<Position> {
-    return commonGenerator(this.board, origin, new Position(0, -1), {
-      acceptanceFn: this.acceptanceFn,
-      take: this.take,
-    });
+  #generateTop(): Iterable<Position> {
+    return commonGenerator(this.board, this.piece, [0, -1], this.#options);
   }
 
-  private generateBottom(origin: Position): Generator<Position> {
-    return commonGenerator(this.board, origin, new Position(0, 1), {
-      acceptanceFn: this.acceptanceFn,
-      take: this.take,
-    });
+  #generateBottom(): Iterable<Position> {
+    return commonGenerator(this.board, this.piece, [0, 1], this.#options);
   }
 }

@@ -1,11 +1,10 @@
-import { expect, test } from "vitest";
-import { Board } from "src/board/mod.ts";
-import { King, Knight } from "src/piece/mod.ts";
-import { Color } from "src/color.ts";
-import { Vertical } from "src/movement/vertical.ts";
-import { Direction } from "src/direction.ts";
-import { pos, Position } from "src/position.ts";
-import { MovementStatus } from "../../src/movement/movement.ts";
+import { beforeEach, expect, test } from "vitest";
+import { Board } from "src/board/mod";
+import { Color, colorInvert } from "src/color";
+import { Vertical } from "src/movement/vertical";
+import { Direction } from "src/direction";
+import { pos, Position } from "src/position";
+import { MovementStatus } from "../../src/movement/movement";
 
 function positionsToString(values: Position[]): string {
   return values
@@ -14,30 +13,44 @@ function positionsToString(values: Position[]): string {
     .join(", ");
 }
 
+let board: Board;
+
+beforeEach(() => {
+  board = Board.empty();
+});
+
 test("Should generate both direction positions", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(2, 2));
+  const piece = board.factory.createKing(Color.white, pos(2, 2));
   const move = new Vertical(piece, board);
   const result = positionsToString(Array.from(move));
-  const expected = positionsToString([pos(2, 0), pos(2, 1), pos(2, 3), pos(2, 4), pos(2, 5), pos(2, 6), pos(2, 7)]);
+  const expected = positionsToString([
+    pos(2, 0),
+    pos(2, 1),
+    pos(2, 3),
+    pos(2, 4),
+    pos(2, 5),
+    pos(2, 6),
+    pos(2, 7),
+  ]);
   expect(result).toBe(expected);
 });
 
 test("Should generate top direction positions", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(2, 5));
+  const piece = board.factory.createKing(Color.white, pos(2, 5));
   const move = new Vertical(piece, board, { direction: Direction.top });
   const result = positionsToString(Array.from(move));
-  const expected = positionsToString([pos(2, 4), pos(2, 3), pos(2, 2), pos(2, 1), pos(2, 0)]);
+  const expected = positionsToString([
+    pos(2, 4),
+    pos(2, 3),
+    pos(2, 2),
+    pos(2, 1),
+    pos(2, 0),
+  ]);
   expect(result).toBe(expected);
 });
 
 test("Should generate bottom direction positions", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(2, 5));
+  const piece = board.factory.createKing(Color.white, pos(2, 5));
   const move = new Vertical(piece, board, { direction: Direction.bottom });
   const result = positionsToString(Array.from(move));
   const expected = positionsToString([pos(2, 6), pos(2, 7)]);
@@ -45,9 +58,7 @@ test("Should generate bottom direction positions", () => {
 });
 
 test("Should generate taking 1 position", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(6, 6));
+  const piece = board.factory.createKing(Color.white, pos(6, 6));
   const move = new Vertical(piece, board, { take: 1 });
   const result = positionsToString(Array.from(move));
   const expected = positionsToString([pos(6, 7), pos(6, 5)]);
@@ -55,20 +66,21 @@ test("Should generate taking 1 position", () => {
 });
 
 test("Should generate taking 2 positions", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(3, 3));
+  const piece = board.factory.createKing(Color.white, pos(3, 3));
   const move = new Vertical(piece, board, { take: 2 });
   const result = positionsToString(Array.from(move));
-  const expected = positionsToString([pos(3, 1), pos(3, 2), pos(3, 4), pos(3, 5)]);
+  const expected = positionsToString([
+    pos(3, 1),
+    pos(3, 2),
+    pos(3, 4),
+    pos(3, 5),
+  ]);
   expect(result).toBe(expected);
 });
 
 test("Should not include ally piece position (default)", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(3, 0));
-  board.place(new Knight(Color.white), pos(3, 3));
+  const piece = board.factory.createKing(Color.white, pos(3, 0));
+  board.factory.createKing(piece.color, pos(3, 3));
   const move = new Vertical(piece, board, { direction: Direction.bottom });
   const result = positionsToString(Array.from(move));
   const expected = positionsToString([pos(3, 1), pos(3, 2)]);
@@ -76,10 +88,8 @@ test("Should not include ally piece position (default)", () => {
 });
 
 test("Should include enemy piece position (default)", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(3, 0));
-  board.place(new Knight(Color.black), pos(3, 3));
+  const piece = board.factory.createKing(Color.white, pos(3, 0));
+  board.factory.createKing(colorInvert(piece.color), pos(3, 3));
   const move = new Vertical(piece, board, { direction: Direction.bottom });
   const result = positionsToString(Array.from(move));
   const expected = positionsToString([pos(3, 1), pos(3, 2), pos(3, 3)]);
@@ -87,10 +97,8 @@ test("Should include enemy piece position (default)", () => {
 });
 
 test("Should change acceptance criteria", () => {
-  const board = Board.empty();
-  const piece = new King(Color.white);
-  board.place(piece, pos(3, 0));
-  board.place(new Knight(Color.black), pos(3, 3));
+  const piece = board.factory.createKing(Color.white, pos(3, 0));
+  board.factory.createKing(colorInvert(piece.color), pos(3, 3));
   const move = new Vertical(piece, board, {
     direction: Direction.bottom,
     acceptanceFn: (board, origin, target) => {

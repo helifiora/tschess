@@ -1,8 +1,7 @@
-import { expect, test } from "vitest";
-import { pos, Position } from "src/position.ts";
-import { Board } from "src/board/mod.ts";
-import { Knight, Queen } from "src/piece/mod.ts";
-import { Color } from "src/color.ts";
+import { beforeEach, expect, test } from "vitest";
+import { pos, Position } from "src/position";
+import { Board } from "src/board/mod";
+import { Color, colorInvert } from "src/color";
 
 function positionsToString(values: Position[]): string {
   return values
@@ -10,6 +9,13 @@ function positionsToString(values: Position[]): string {
     .sort((a, b) => a.localeCompare(b))
     .join(", ");
 }
+
+let board: Board;
+
+beforeEach(() => {
+  board = Board.empty();
+});
+
 test.each([
   [
     pos(0, 3),
@@ -115,14 +121,14 @@ test.each([
       pos(3, 7),
     ],
   ],
-])("Should get movements when in middle corner - %s", (input: Position, output: Position[]) => {
-  const board = Board.empty();
-  const queen = new Queen(Color.white);
-  board.place(queen, input);
-  const expected = positionsToString(output);
-  const result = positionsToString(Array.from(queen.movements(board)));
-  expect(result).toBe(expected);
-});
+])(
+  "Should get movements when in middle corner - %s",
+  (input: Position, output: Position[]) => {
+    const queen = board.factory.createQueen(Color.black, input);
+    const result = positionsToString(Array.from(queen.movements(board)));
+    expect(result).toBe(positionsToString(output));
+  }
+);
 
 test.each([
   [
@@ -229,14 +235,14 @@ test.each([
       pos(6, 6),
     ],
   ],
-])("Should get movements when in corner - %s", (input: Position, output: Position[]) => {
-  const board = Board.empty();
-  const queen = new Queen(Color.white);
-  board.place(queen, input);
-  const expected = positionsToString(output);
-  const result = positionsToString(Array.from(queen.movements(board)));
-  expect(result).toBe(expected);
-});
+])(
+  "Should get movements when in corner - %s",
+  (input: Position, output: Position[]) => {
+    const queen = board.factory.createQueen(Color.black, input);
+    const result = positionsToString(Array.from(queen.movements(board)));
+    expect(result).toBe(positionsToString(output));
+  }
+);
 
 test.each([
   [
@@ -269,14 +275,14 @@ test.each([
       pos(0, 4),
     ],
   ],
-])("Should get all movements when piece is in middle of the board - %s", (input: Position, output: Position[]) => {
-  const board = Board.empty();
-  const queen = new Queen(Color.white);
-  board.place(queen, input);
-  const expected = positionsToString(output);
-  const result = positionsToString(Array.from(queen.movements(board)));
-  expect(result).toBe(expected);
-});
+])(
+  "Should get all movements when piece is in middle of the board - %s",
+  (input: Position, output: Position[]) => {
+    const queen = board.factory.createQueen(Color.black, input);
+    const result = positionsToString(Array.from(queen.movements(board)));
+    expect(result).toBe(positionsToString(output));
+  }
+);
 
 test.each([
   [
@@ -301,19 +307,19 @@ test.each([
       pos(7, 1),
     ],
   ],
-])("Should not get movements of allies - %s", (input: Position, enemies: Position[], output: Position[]) => {
-  const board = Board.empty();
-  const queen = new Queen(Color.white);
-  board.place(queen, input);
+])(
+  "Should not get movements of allies - %s",
+  (input: Position, enemies: Position[], output: Position[]) => {
+    const queen = board.factory.createQueen(Color.black, input);
 
-  for (const item of enemies) {
-    board.place(new Knight(Color.white), item);
+    for (const position of enemies) {
+      board.factory.createKnight(queen.color, position);
+    }
+
+    const result = Array.from(queen.movements(board));
+    expect(positionsToString(result)).toBe(positionsToString(output));
   }
-
-  const expected = positionsToString(output);
-  const result = positionsToString(Array.from(queen.movements(board)));
-  expect(result).toBe(expected);
-});
+);
 
 test.each([
   [
@@ -342,16 +348,16 @@ test.each([
       pos(7, 1),
     ],
   ],
-])("Should get movements of enemies %s", (input: Position, enemies: Position[], output: Position[]) => {
-  const board = Board.empty();
-  const queen = new Queen(Color.white);
-  board.place(queen, input);
+])(
+  "Should get movements of enemies %s",
+  (input: Position, enemies: Position[], output: Position[]) => {
+    const queen = board.factory.createQueen(Color.black, input);
 
-  for (const item of enemies) {
-    board.place(new Knight(Color.black), item);
+    for (const position of enemies) {
+      board.factory.createBishop(colorInvert(queen.color), position);
+    }
+
+    const result = Array.from(queen.movements(board));
+    expect(positionsToString(result)).toBe(positionsToString(output));
   }
-
-  const expected = positionsToString(output);
-  const result = positionsToString(Array.from(queen.movements(board)));
-  expect(result).toBe(expected);
-});
+);

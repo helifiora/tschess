@@ -4,32 +4,64 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: create all pieces subclasses and tests">
-      <change afterPath="$PROJECT_DIR$/packages/core/src/check.ts" afterDir="false" />
+    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: implementation movements, board and piece">
+      <change afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/dist/index.d.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/dist/index.js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/cell.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/data.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/either.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/game/check.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/game/errors.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/game/game.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/index.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/iter.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/movement/builder.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/piece/factory.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/piece/raw.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/src/pipe.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/test/game/game.spec.ts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/packages/core/tsup.config.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/board/board-position.ts" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/board/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/board.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/chain.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/chain.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/board/table.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/table.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/chain.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/check.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/color.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/color.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/direction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/direction.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/generator.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/generator.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/movement/common.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/common.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/lshape.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/lshape.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/movement/mod.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/mod.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/bishop.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/bishop.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/king.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/king.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/knight.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/knight.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/rook.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/rook.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/position.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/position.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/tsconfig.json" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -39,6 +71,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
+        <option value="SCSS File" />
+        <option value="Vue Composition API Component" />
         <option value="TypeScript File" />
       </list>
     </option>
@@ -46,36 +80,61 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+    <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
   <component name="ProjectId" id="2PLtRuc9xajAwJhBwZ6EuCGQYw0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
-    &quot;last_opened_file_path&quot;: &quot;C:/Users/helif/Labs/tschess/packages/core/test/piece&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;prettierjs.PrettierConfiguration.Package&quot;: &quot;C:\\Users\\helif\\Labs\\tschess\\node_modules\\prettier&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;settings.javascript.prettier&quot;,
-    &quot;ts.external.directory.path&quot;: &quot;C:\\Users\\helif\\Labs\\tschess\\node_modules\\typescript\\lib&quot;,
-    &quot;use.deno.dismiss&quot;: &quot;true&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "FindInProjectState.directoryName": "C:\\Users\\helif\\Labs\\tschess\\packages\\core\\src\\game",
+    "FindInProjectState.isProjectScope": "false",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "WebServerToolWindowFactoryState": "false",
+    "git-widget-placeholder": "master",
+    "last_opened_file_path": "C:/Users/helif/Labs/tschess/packages/web/src/components/icons",
+    "list.type.of.created.stylesheet": "SCSS",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "prettierjs.PrettierConfiguration.Package": "C:\\Users\\helif\\Labs\\tschess\\node_modules\\prettier",
+    "settings.editor.selected.configurable": "settings.vue",
+    "ts.external.directory.path": "C:\\Users\\helif\\Labs\\tschess\\packages\\core\\node_modules\\typescript\\lib",
+    "use.deno.dismiss": "true",
+    "vue.rearranger.settings.migration": "true"
+  },
+  "keyToStringList": {
+    "vue.recent.templates": [
+      "Vue Composition API Component"
+    ]
   }
-}</component>
+}]]></component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\helif\Labs\tschess\packages\web\src\components\icons" />
       <recent name="C:\Users\helif\Labs\tschess\packages\core\test\piece" />
       <recent name="C:\Users\helif\Labs\tschess\packages\core\test\movement" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\helif\Labs\tschess\packages\core\src\application\usecase" />
+      <recent name="C:\Users\helif\Labs\tschess\packages\core\src\game" />
+      <recent name="C:\Users\helif\Labs\tschess\packages\core\src\piece" />
+      <recent name="C:\Users\helif\Labs\tschess\packages\core\src\piece\raw" />
       <recent name="C:\Users\helif\Labs\tschess\packages\core\src" />
     </key>
   </component>
@@ -84,54 +143,59 @@
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
+      <vitest-options value="--run" />
       <envs />
       <scope-kind value="DIRECTORY" />
       <test-directory value="$PROJECT_DIR$/packages/core/test" />
       <method v="2" />
     </configuration>
-    <configuration name="bishop.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="diagonal.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
+      <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.ts" />
       <method v="2" />
     </configuration>
-    <configuration name="king.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="horizontal.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
+      <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.ts" />
       <method v="2" />
     </configuration>
-    <configuration name="pawn.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="lshape.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
+      <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.ts" />
       <method v="2" />
     </configuration>
-    <configuration name="rook.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+    <configuration name="vertical.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
       <working-dir value="$PROJECT_DIR$/packages/core" />
+      <vitest-options value="--run" />
       <envs />
       <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" />
+      <test-file value="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.ts" />
       <method v="2" />
     </configuration>
     <recent_temporary>
       <list>
         <item itemvalue="Vitest.Tests in test\" />
-        <item itemvalue="Vitest.king.spec.ts" />
-        <item itemvalue="Vitest.pawn.spec.ts" />
-        <item itemvalue="Vitest.bishop.spec.ts" />
-        <item itemvalue="Vitest.rook.spec.ts" />
+        <item itemvalue="Vitest.vertical.spec.ts" />
+        <item itemvalue="Vitest.lshape.spec.ts" />
+        <item itemvalue="Vitest.horizontal.spec.ts" />
+        <item itemvalue="Vitest.diagonal.spec.ts" />
       </list>
     </recent_temporary>
   </component>
@@ -155,7 +219,46 @@
       <workItem from="1685302571016" duration="2456000" />
       <workItem from="1685324808049" duration="436000" />
       <workItem from="1685376454198" duration="12144000" />
-      <workItem from="1685414150645" duration="78000" />
+      <workItem from="1685414150645" duration="4956000" />
+      <workItem from="1685459148019" duration="1866000" />
+      <workItem from="1685482075784" duration="704000" />
+      <workItem from="1685539868458" duration="13923000" />
+      <workItem from="1685562559571" duration="6224000" />
+      <workItem from="1685585033808" duration="3651000" />
+      <workItem from="1685645152767" duration="1395000" />
+      <workItem from="1685673886381" duration="742000" />
+      <workItem from="1685676383789" duration="2965000" />
+      <workItem from="1686013141707" duration="27000" />
+      <workItem from="1686250052179" duration="6096000" />
+      <workItem from="1686325505328" duration="4043000" />
+      <workItem from="1686329922122" duration="1214000" />
+      <workItem from="1686339170626" duration="4295000" />
+      <workItem from="1686921338366" duration="615000" />
+      <workItem from="1686938117377" duration="967000" />
+      <workItem from="1687405508329" duration="3882000" />
+      <workItem from="1687482435959" duration="720000" />
+      <workItem from="1687490056306" duration="981000" />
+      <workItem from="1687491066717" duration="2114000" />
+      <workItem from="1687530195318" duration="5746000" />
+      <workItem from="1687538200940" duration="1981000" />
+      <workItem from="1687541257444" duration="500000" />
+      <workItem from="1687542357754" duration="487000" />
+      <workItem from="1687553481849" duration="1028000" />
+      <workItem from="1687699397307" duration="1307000" />
+      <workItem from="1687981485824" duration="10716000" />
+      <workItem from="1688001360999" duration="3357000" />
+      <workItem from="1688006674126" duration="3457000" />
+      <workItem from="1688044440534" duration="4862000" />
+      <workItem from="1688054347470" duration="13270000" />
+      <workItem from="1688090821480" duration="2420000" />
+      <workItem from="1688320051908" duration="1173000" />
+      <workItem from="1688322558401" duration="1662000" />
+      <workItem from="1688429919234" duration="3977000" />
+      <workItem from="1688439111460" duration="902000" />
+      <workItem from="1688613032873" duration="1353000" />
+      <workItem from="1688699838356" duration="2935000" />
+      <workItem from="1688742773633" duration="11264000" />
+      <workItem from="1688756342397" duration="1215000" />
     </task>
     <task id="LOCAL-00001" summary="feat: table and board implementation and test">
       <option name="closed" value="true" />
@@ -173,11 +276,62 @@
       <option name="project" value="LOCAL" />
       <updated>1685309089579</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="feat: create all pieces subclasses and tests">
+      <option name="closed" value="true" />
+      <created>1685414234587</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1685414234587</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+    <option name="exactExcludedFiles">
+      <list>
+        <option value="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.d.ts" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.d.ts" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/mod.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.d.ts" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/movement.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/builder.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/diagonal.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/horizontal.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/vertical.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/lshape.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/mod.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/movement/common.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/knight.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/bishop.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/pawn.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/queen.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/piece.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/king.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/board/mod.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/piece/rook.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/board/table.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/board/errors.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/game/errors.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/board/board.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/game/game.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/game/check.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/direction.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/pipe.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/common.spec.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/color.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/index.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/position.js" />
+        <option value="$PROJECT_DIR$/packages/core/src/generator.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/common.spec.d.ts" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.js" />
+        <option value="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.d.ts" />
+      </list>
+    </option>
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -194,6 +348,10 @@
     <MESSAGE value="feat: table and board implementation and test" />
     <MESSAGE value="feat: create pieces subclasses and implement knight moves and tests" />
     <MESSAGE value="feat: create all pieces subclasses and tests" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: create all pieces subclasses and tests" />
+    <MESSAGE value="feat: implementation movements, board and piece" />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: implementation movements, board and piece" />
+  </component>
+  <component name="VueSettings">
+    <option name="innerServiceType" value="DISABLED" />
   </component>
 </project>

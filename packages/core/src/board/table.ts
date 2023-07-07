@@ -1,33 +1,76 @@
 import type { Piece } from "src/piece/mod.ts";
 import { Position } from "src/position.ts";
 
-export type TableItem = Piece | null;
+export class Table {
+  static minValue = 0;
+  static maxValue = 7;
 
-export const tableMinValue = 0;
-export const tableMaxValue = 7;
+  readonly #table: Data;
 
-export type Table = [
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem],
-  [TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem, TableItem]
-];
-
-export function cloneTable(table: Table): Table {
-  const result = createEmptyTable();
-
-  for (const [piece, position] of tablePiecePositionGenerator(table)) {
-    result[position.y][position.x] = piece.clone();
+  constructor(value: Data) {
+    this.#table = value;
   }
 
-  return result;
+  clone(): Table {
+    const data = createData();
+
+    for (const piece of this.generatePiece()) {
+      const position = piece.position;
+      data[position.y][position.x] = piece.clone();
+    }
+
+    return new Table(data);
+  }
+
+  clear(position: Position): void {
+    this.#table[position.y][position.x] = null;
+  }
+
+  exists(position: Position): boolean {
+    return this.#table[position.y][position.x] !== null;
+  }
+
+  get(position: Position): Piece | null {
+    return this.#table[position.y][position.x];
+  }
+
+  put(piece: Piece, position: Position): void {
+    this.#table[position.y][position.x] = piece;
+  }
+
+  *generatePiece(): Generator<Piece> {
+    for (const position of Table.generatePosition()) {
+      const pieceOrNull = this.#table[position.y][position.x];
+      if (pieceOrNull !== null) {
+        yield pieceOrNull;
+      }
+    }
+  }
+
+  static isInvalid(x: number, y: number): boolean {
+    return !Table.isValid(x, y);
+  }
+
+  static isValid(x: number, y: number): boolean {
+    const validX = x >= Table.minValue && x <= Table.maxValue;
+    const validY = y >= Table.minValue && y <= Table.maxValue;
+    return validX && validY;
+  }
+
+  static empty(): Table {
+    return new Table(createData());
+  }
+
+  static *generatePosition(): Generator<Position> {
+    for (let y = Table.minValue; y <= Table.maxValue; y++) {
+      for (let x = Table.minValue; x <= Table.maxValue; x++) {
+        yield new Position(x, y);
+      }
+    }
+  }
 }
 
-export function createEmptyTable(): Table {
+function createData(): Data {
   return [
     [null, null, null, null, null, null, null, null],
     [null, null, null, null, null, null, null, null],
@@ -40,47 +83,26 @@ export function createEmptyTable(): Table {
   ];
 }
 
-export function getTablePiecesMap(table: Table): Map<Piece, Position> {
-  const result = new Map<Piece, Position>();
-  for (const [piece, position] of tablePiecePositionGenerator(table)) {
-    result.set(piece, position);
-  }
+type DataItem = Piece | null;
 
-  return result;
-}
+type DataLine = [
+  DataItem,
+  DataItem,
+  DataItem,
+  DataItem,
+  DataItem,
+  DataItem,
+  DataItem,
+  DataItem
+];
 
-export function invalidPosition(x: number, y: number): boolean {
-  return !validPosition(x, y);
-}
-
-export function* tablePieceGenerator(table: Table): Generator<Piece> {
-  for (const position of tablePositionGenerator()) {
-    const pieceOrNull = table[position.y][position.x];
-    if (pieceOrNull !== null) {
-      yield pieceOrNull;
-    }
-  }
-}
-
-export function* tablePiecePositionGenerator(table: Table): Generator<[Piece, Position]> {
-  for (const position of tablePositionGenerator()) {
-    const pieceOrNull = table[position.y][position.x];
-    if (pieceOrNull !== null) {
-      yield [pieceOrNull, position];
-    }
-  }
-}
-
-export function* tablePositionGenerator(): Generator<Position> {
-  for (let y = tableMinValue; y <= tableMaxValue; y++) {
-    for (let x = tableMinValue; x <= tableMaxValue; x++) {
-      yield new Position(x, y);
-    }
-  }
-}
-
-export function validPosition(x: number, y: number): boolean {
-  const validX = x >= tableMinValue && x <= tableMaxValue;
-  const validY = y >= tableMinValue && y <= tableMaxValue;
-  return validX && validY;
-}
+type Data = [
+  DataLine,
+  DataLine,
+  DataLine,
+  DataLine,
+  DataLine,
+  DataLine,
+  DataLine,
+  DataLine
+];

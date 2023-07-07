@@ -1,27 +1,24 @@
 import { Movement } from "./movement.ts";
-import { Position } from "../position.ts";
-import { invalidPosition } from "../board/table.ts";
+import type { Position } from "../position.ts";
 
 export class LShape extends Movement {
   *[Symbol.iterator](): Iterator<Position> {
-    const origin = this.board.getPiecePosition(this.piece);
-    if (origin === null) {
-      return;
-    }
+    const origin = this.piece.position;
 
-    for (const increment of this.increments()) {
-      const next = origin.toAdd(increment);
-      if (this.canGenerate(next)) {
+    for (const increment of this.#increments()) {
+      if (!origin.canAdd(increment[0], increment[1])) {
+        continue;
+      }
+
+      const next = origin.toAdd(increment[0], increment[1]);
+
+      if (this.#canGenerate(next)) {
         yield next;
       }
     }
   }
 
-  private canGenerate(next: Position): boolean {
-    if (invalidPosition(next.x, next.y)) {
-      return false;
-    }
-
+  #canGenerate(next: Position): boolean {
     const positionValue = this.board.get(next);
     if (positionValue === null) {
       return true;
@@ -30,16 +27,16 @@ export class LShape extends Movement {
     return this.piece.color !== positionValue.color;
   }
 
-  private increments(): Position[] {
+  #increments(): [x: number, y: number][] {
     return [
-      new Position(-2, -1),
-      new Position(-2, 1),
-      new Position(-1, -2),
-      new Position(-1, 2),
-      new Position(1, -2),
-      new Position(1, 2),
-      new Position(2, -1),
-      new Position(2, 1),
+      [-2, -1],
+      [-2, 1],
+      [-1, -2],
+      [-1, 2],
+      [1, -2],
+      [1, 2],
+      [2, -1],
+      [2, 1],
     ];
   }
 }

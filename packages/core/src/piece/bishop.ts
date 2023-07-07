@@ -1,14 +1,12 @@
 import { Piece } from "./piece.ts";
-import { Diagonal } from "src/movement/mod.ts";
-import type { Board } from "src/board/mod.ts";
-import type { Position } from "src/position.ts";
+import { createMovementBuilder } from "../movement/builder.ts";
+import type { Board } from "../board/board.ts";
+import type { Position } from "../position.ts";
 
 export class Bishop extends Piece {
-  movements(board: Board): Iterable<Position> {
-    return new Diagonal(this, board);
-  }
+  clone = (): Bishop => new Bishop(this);
 
-  clone(): Bishop {
-    return new Bishop(this.color);
+  movements(board: Board): Iterable<Position> {
+    return createMovementBuilder(this).addDiagonal().build(board);
   }
 }
