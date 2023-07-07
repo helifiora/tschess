@@ -40,7 +40,7 @@ export class Game {
     originPiece.incrementMoveCount();
 
     if (destinyValue !== null) {
-      this.#capturedPieces.push(parsePieceToRaw(destinyValue));
+      this.#capturedPieces.push(destinyValue);
     }
 
     this.#currentTeam = colorInvert(this.#currentTeam);
