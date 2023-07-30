@@ -1,11 +1,13 @@
-import { type Cell, type GameData, pipe } from "@tschess/shared";
+import type { Cell, GameData } from "@tschess/shared";
+import type { Result } from "../result.ts";
 import { Position } from "../position.ts";
 import { Board } from "../board/board.ts";
-import type { Result } from "../result.ts";
+import { pipe } from "@tschess/shared";
 import { filter, map, toArray } from "@tschess/iterator-helper";
 
 export class GetPieceMoves {
   #data: GameData;
+
   constructor(data: GameData) {
     this.#data = data;
   }

@@ -1,11 +1,10 @@
 <script setup lang="ts">
-import { Game, LocalGameGateway } from "@/composable/game";
-import { onMounted, ref } from "vue";
-import type { Cell } from "@tschess/shared";
 import AppCell from "@/components/AppCell.vue";
+import type { Cell } from "@tschess/shared";
+import { Game, LocalGameGateway } from "@/composable/game";
+import { onMounted } from "vue";
 
 const game = new Game(new LocalGameGateway());
-const input = ref("");
 
 onMounted(() => game.start());
 
@@ -21,15 +20,6 @@ async function onClick(cell: Cell): Promise<void> {
   }
 
   await game.move(cell);
-}
-
-async function onSend(): Promise<void> {
-  const result = input.value;
-  await game.selectMoves(result as Cell);
-}
-
-function clearMessage(): void {
-  game.clearError();
 }
 
 function toCell(value: number): Cell {
@@ -58,8 +48,7 @@ const cells = new Array(64).fill(null).map((_, i) => toCell(i));
       <p v-if="game.error.value !== null" class="app-status__error">
         {{ game.error }}
       </p>
-      <!--      <input v-model="input" />-->
-      <!--      <button @click="onSend()">Send</button>-->
+
       <div v-if="game.isCheck.value !== null">
         <p>{{ game.isCheck }} is in check!</p>
         <p v-if="game.isCheckmate.value">OMG! Is Checkmate</p>

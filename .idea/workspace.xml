@@ -5,109 +5,11 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: finalize basic prototype web and functionalities">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/Project.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/.eslintrc.cjs" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/.gitignore" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/env.d.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/index.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/public/favicon.ico" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/App.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/logo.svg" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/assets/main.css" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/AppCell.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/HelloWorld.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/TheWelcome.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/WelcomeItem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/__tests__/HelloWorld.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/icons/IconCommunity.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/icons/IconDocumentation.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/icons/IconEcosystem.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/icons/IconSupport.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/icons/IconTooling.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/Bishop.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/King.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/Knight.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/Pawn.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/Queen.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/components/pieces/Rook.vue" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/composable/game.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/src/main.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/tsconfig.app.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/tsconfig.config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/tsconfig.vitest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/apps/web/vite.config.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/result.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/usecase/create-initial-game.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/usecase/get-piece-moves.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/core/src/usecase/move-piece.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/iterator-helper/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/iterator-helper/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/iterator-helper/tsconfig.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/package.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/src/cell.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/src/color.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/src/data.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/src/index.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/test/generator.spec.ts" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/packages/shared/tsconfig.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.prettierrc" beforeDir="false" afterPath="$PROJECT_DIR$/.prettierrc" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lerna.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/dist/index.d.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/dist/index.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/board/board.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/board.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/board/errors.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/errors.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/board/mod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/board/table.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/board/table.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/cell.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/color.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/data.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/direction.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/direction.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/either.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/game/check.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/game/errors.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/game/game.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/generator.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/index.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/index.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/iter.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/diagonal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/horizontal.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/mod.ts" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/movement.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/movement/vertical.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/factory.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/factory.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/king.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/king.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/mod.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/apps/web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.vue" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/piece.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/queen.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/raw.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/raw.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/pipe.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/src/pipe.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/position.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/position.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/board/table.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/game/game.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/game/game.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/common.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/diagonal.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/horizontal.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/lshape.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/movement/vertical.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/bishop.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/king.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/knight.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/pawn.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/queen.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/test/piece/rook.spec.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/tsconfig.json" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/tsconfig.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/tsup.config.ts" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/usecase/get-piece-moves.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/usecase/get-piece-moves.ts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/packages/core/src/usecase/move-piece.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/usecase/move-piece.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -126,6 +28,20 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;helifiora&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">
+    <option name="selectedUrlAndAccountId">
+      <UrlAndAccount>
+        <option name="accountId" value="ba32895e-983c-4317-a02f-72cacb1d92de" />
+        <option name="url" value="https://github.com/helifiora/tschess" />
+      </UrlAndAccount>
+    </option>
+  </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
     <setting file="mock:///AIAssistantSnippet" root0="ESSENTIAL" />
@@ -138,10 +54,9 @@
   <component name="MarkdownSettingsMigration">
     <option name="stateVersion" value="1" />
   </component>
-  <component name="ProjectColorInfo">{
-  &quot;customColor&quot;: &quot;&quot;,
-  &quot;associatedIndex&quot;: -1
-}</component>
+  <component name="ProjectColorInfo"><![CDATA[{
+  "associatedIndex": 4
+}]]></component>
   <component name="ProjectId" id="2PLtRuc9xajAwJhBwZ6EuCGQYw0" />
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
@@ -343,7 +258,9 @@
       <workItem from="1690408564002" duration="582000" />
       <workItem from="1690409164597" duration="3245000" />
       <workItem from="1690423781294" duration="3670000" />
-      <workItem from="1690692604659" duration="2705000" />
+      <workItem from="1690692604659" duration="3652000" />
+      <workItem from="1690696935905" duration="65000" />
+      <workItem from="1690730307404" duration="285000" />
     </task>
     <task id="LOCAL-00001" summary="feat: table and board implementation and test">
       <option name="closed" value="true" />
@@ -385,7 +302,15 @@
       <option name="project" value="LOCAL" />
       <updated>1688757638849</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="feat: finalize basic prototype web and functionalities">
+      <option name="closed" value="true" />
+      <created>1690695465678</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1690695465678</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">

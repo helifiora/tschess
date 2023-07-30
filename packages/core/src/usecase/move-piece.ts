@@ -1,8 +1,9 @@
-import { type Cell, Color, colorInvert, type GameData, type GameDataResult, pipe } from "@tschess/shared";
-import { filter, flatMapWithEntry, isEmpty } from "@tschess/iterator-helper";
+import type { Cell, GameData, GameDataResult } from "@tschess/shared";
 import type { Result } from "../result.ts";
 import { Board } from "../board/board.ts";
+import { Color, colorInvert, pipe } from "@tschess/shared";
 import { Position } from "../position.ts";
+import { filter, flatMapWithEntry, isEmpty } from "@tschess/iterator-helper";
 
 export class MovePiece {
   #data: GameData;
@@ -82,12 +83,3 @@ export class MovePiece {
     return !cloned.isPieceInEnemyMoves(king);
   }
 }
-
-/**
- *   #canUndoCheck(team: Color): boolean {
- *     return iter(this.#board.getTeamPieces(team))
- *       .flatMapWithEntryValue((piece) => piece.movements(this.#board))
- *       .some(([t, p]) => !this.#canPieceMoveCausesCheck(p.position, t));
- *   }
- *
- */
