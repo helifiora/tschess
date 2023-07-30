@@ -1,9 +1,9 @@
 import { beforeEach, expect, test } from "vitest";
-import { Board } from "src/board/mod";
+import { Board } from "src/board/board.ts";
 import { commonGenerator } from "src/movement/common";
 import { pos, Position } from "src/position";
-import { Color } from "src/color";
 import { MovementStatus } from "src/movement/movement";
+import { Color } from "@tschess/shared";
 
 let board: Board;
 

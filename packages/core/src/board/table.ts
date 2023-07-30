@@ -1,5 +1,5 @@
-import type { Piece } from "src/piece/mod.ts";
-import { Position } from "src/position.ts";
+import type { Piece } from "../piece/piece.ts";
+import { Position } from "../position.ts";
 
 export class Table {
   static minValue = 0;

@@ -1,6 +1,6 @@
 import { beforeEach, expect, test } from "vitest";
-import { Board } from "src/board/mod";
-import { Color, colorInvert } from "src/color";
+import { Board } from "src/board/board.ts";
+import { Color, colorInvert } from "@tschess/shared";
 import { Direction } from "src/direction";
 import { pos, Position } from "src/position";
 import { MovementStatus } from "../../src/movement/movement";

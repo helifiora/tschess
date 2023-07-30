@@ -1,4 +1,4 @@
-import type { Color } from "../color.ts";
+import { Color } from "@tschess/shared";
 import { Rook } from "./rook.ts";
 import { Knight } from "./knight.ts";
 import { Pawn } from "./pawn.ts";
@@ -14,7 +14,7 @@ type PieceFactoryOptions = {
 
 export class PieceFactory {
   #board: Board;
-  #updateBoard: boolean;
+  readonly #updateBoard: boolean;
   constructor(board: Board, options: PieceFactoryOptions = {}) {
     this.#board = board;
     this.#updateBoard = options.updateBoard ?? false;

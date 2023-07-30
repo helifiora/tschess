@@ -1,5 +1,5 @@
-import { Piece } from "./piece.ts";
-import { createMovementBuilder } from "../movement/builder.ts";
+import { Piece } from "./piece";
+import { createMovementBuilder } from "../movement/builder";
 import type { Board } from "../board/board.ts";
 import type { Position } from "../position.ts";
 

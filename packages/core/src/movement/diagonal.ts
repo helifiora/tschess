@@ -1,8 +1,8 @@
 import { Movement } from "./movement.ts";
-import type { Piece } from "src/piece/piece.ts";
-import type { Position } from "src/position.ts";
+import type { Piece } from "../piece/piece.ts";
+import type { Position } from "../position.ts";
 import { Direction } from "../direction.ts";
-import { CommonAcceptanceFn, commonGenerator, CommonGeneratorOptions } from "./common.ts";
+import { type CommonAcceptanceFn, commonGenerator, type CommonGeneratorOptions } from "./common";
 import { Board } from "../board/board.ts";
 
 export type DiagonalOptions = {

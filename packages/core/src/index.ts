@@ -1,4 +1,4 @@
-export { Game } from "./game/game.ts";
-export { Position } from "./position.ts";
-export { Color, colorInvert } from "./color.ts";
-export { Cell } from "./cell.ts";
+export { CreateInitialGame } from "./usecase/create-initial-game.ts";
+export { MovePiece } from "./usecase/move-piece.ts";
+export { GetPieceMoves } from "./usecase/get-piece-moves.ts";
+export type { Result } from "./result.ts";

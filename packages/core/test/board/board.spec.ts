@@ -1,7 +1,7 @@
 import { beforeEach, expect, test } from "vitest";
-import { Board } from "src/board/mod.ts";
+import { Board } from "src/board/board.ts";
 import { pos } from "src/position.ts";
-import { Color, colorInvert } from "src/color.ts";
+import { Color, colorInvert } from "@tschess/shared";
 
 let board: Board;
 
@@ -33,21 +33,18 @@ test("Should verify if position is occupied", () => {
   expect(board.isOccupied(position)).toBe(true);
 });
 
-test.each([Color.black, Color.white])(
-  "Should retrieve pieces from team [%s]",
-  (color: Color) => {
-    const p1 = board.factory.createKnight(color, pos(1, 1));
-    const p2 = board.factory.createKnight(color, pos(1, 2));
-    const p3 = board.factory.createKnight(color, pos(1, 3));
+test.each([Color.black, Color.white])("Should retrieve pieces from team [%s]", (color: Color) => {
+  const p1 = board.factory.createKnight(color, pos(1, 1));
+  const p2 = board.factory.createKnight(color, pos(1, 2));
+  const p3 = board.factory.createKnight(color, pos(1, 3));
 
-    board.factory.createKnight(colorInvert(color), pos(5, 5));
-    board.factory.createKnight(colorInvert(color), pos(5, 6));
-    board.factory.createKnight(colorInvert(color), pos(5, 7));
-    const myPieces = new Set([p1, p2, p3]);
-    const result = new Set(board.getTeamPieces(color));
-    expect(result).toEqual(myPieces);
-  }
-);
+  board.factory.createKnight(colorInvert(color), pos(5, 5));
+  board.factory.createKnight(colorInvert(color), pos(5, 6));
+  board.factory.createKnight(colorInvert(color), pos(5, 7));
+  const myPieces = new Set([p1, p2, p3]);
+  const result = new Set(board.getTeamPieces(color));
+  expect(result).toEqual(myPieces);
+});
 
 test("Should retrieve king if it exists", () => {
   const piece = board.factory.createKing(Color.black, pos(1, 1));

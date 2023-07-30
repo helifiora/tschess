@@ -1,8 +1,8 @@
 import { test, expect, beforeEach } from "vitest";
-import { Board } from "src/board/mod";
-import { Color, colorInvert } from "src/color";
-import { pos, Position } from "src/position";
-import { LShape } from "src/movement/lshape";
+import { Board } from "src/board/board.ts";
+import { Color, colorInvert } from "@tschess/shared";
+import { pos, Position } from "src/position.ts";
+import { LShape } from "src/movement/lshape.ts";
 
 function positionsToString(values: Position[]): string {
   return values

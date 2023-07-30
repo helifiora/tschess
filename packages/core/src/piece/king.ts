@@ -1,6 +1,6 @@
-import { Piece } from "./piece.ts";
-import { createMovementBuilder } from "../movement/builder.ts";
-import { CommonAcceptanceFn } from "../movement/common.ts";
+import { Piece } from "./piece";
+import { createMovementBuilder } from "../movement/builder";
+import type { CommonAcceptanceFn } from "../movement/common.ts";
 import { MovementStatus } from "../movement/movement.ts";
 import type { Position } from "../position.ts";
 import type { Board } from "../board/board.ts";

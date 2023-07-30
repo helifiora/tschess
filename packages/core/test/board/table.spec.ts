@@ -1,23 +1,20 @@
 import { expect, test } from "vitest";
-import { Knight, King } from "src/piece/mod.ts";
-import { Color } from "src/color.ts";
+import { Color } from "@tschess/shared";
+import { King } from "src/piece/king.ts";
 import { Table } from "src/board/table.ts";
 import { pos } from "src/position.ts";
+import { Knight } from "src/piece/knight.ts";
 
 test("Should clone all table and pieces", () => {
   const table = Table.empty();
-  const ref1 = new Knight(Color.black);
-  const ref2 = new Knight(Color.white);
-  const ref3 = new King(Color.white);
-  const ref4 = new King(Color.black);
+  const ref1 = new Knight(Color.black, pos(2, 1));
+  const ref2 = new Knight(Color.white, pos(3, 1));
+  const ref3 = new King(Color.white, pos(4, 1));
+  const ref4 = new King(Color.black, pos(5, 1));
   table.put(ref1, pos(2, 1));
-  ref1.position = pos(2, 1);
   table.put(ref2, pos(3, 1));
-  ref2.position = pos(3, 1);
   table.put(ref3, pos(4, 1));
-  ref3.position = pos(4, 1);
   table.put(ref4, pos(5, 1));
-  ref4.position = pos(5, 1);
 
   const clone = table.clone();
   expect(clone).not.toBe(table);
@@ -80,19 +77,15 @@ test("Should generate every position", () => {
 
 test("Should generate only pieces in the board (with position)", () => {
   const table = Table.empty();
-  const ref1 = new King(Color.white);
-  const ref2 = new Knight(Color.white);
-  const ref3 = new King(Color.black);
-  const ref4 = new Knight(Color.black);
+  const ref1 = new King(Color.white, pos(0, 0));
+  const ref2 = new Knight(Color.white, pos(0, 1));
+  const ref3 = new King(Color.black, pos(0, 2));
+  const ref4 = new Knight(Color.black, pos(0, 5));
 
   table.put(ref1, pos(0, 0));
-  ref1.position = pos(0, 2);
   table.put(ref2, pos(0, 1));
-  ref2.position = pos(0, 1);
   table.put(ref3, pos(0, 2));
-  ref3.position = pos(0, 2);
   table.put(ref4, pos(0, 5));
-  ref4.position = pos(0, 5);
 
   const expectedPieces = new Set([ref1, ref2, ref3, ref4]);
   const expectedPositions = new Set([
@@ -110,19 +103,15 @@ test("Should generate only pieces in the board (with position)", () => {
 
 test("Should generate only pieces in the board", () => {
   const table = Table.empty();
-  const ref1 = new King(Color.white);
-  const ref2 = new Knight(Color.white);
-  const ref3 = new King(Color.black);
-  const ref4 = new Knight(Color.black);
+  const ref1 = new King(Color.white, pos(0, 0));
+  const ref2 = new Knight(Color.white, pos(1, 0));
+  const ref3 = new King(Color.black, pos(2, 0));
+  const ref4 = new Knight(Color.black, pos(5, 0));
 
   table.put(ref1, pos(0, 0));
-  ref1.position = pos(0, 0);
   table.put(ref2, pos(1, 0));
-  ref2.position = pos(1, 0);
   table.put(ref3, pos(2, 0));
-  ref3.position = pos(2, 0);
   table.put(ref4, pos(5, 0));
-  ref4.position = pos(5, 0);
 
   const expectedPieces = new Set([ref1, ref2, ref3, ref4]);
 

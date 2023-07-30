@@ -1,5 +1,5 @@
 import { Table } from "./board/table.ts";
-import { Cell } from "./cell.ts";
+import type { Cell } from "@tschess/shared";
 
 export class Position {
   #x: number;
@@ -23,7 +23,7 @@ export class Position {
   }
 
   equals(other: Position): boolean {
-    return this.#x === other.#x && this.#y === other.#y;
+    return this.#x === other.x && this.#y === other.y;
   }
 
   toString(): string {
@@ -44,7 +44,9 @@ export class Position {
   }
 
   toCell(): Cell {
-    return Cell.parseNumber(8 - this.#y, this.#x + 1);
+    const column = "abcdefgh".at(this.x);
+    const row = 8 - this.y;
+    return `${column}${row}` as Cell;
   }
 
   canAdd(x: number, y: number): boolean {
@@ -53,6 +55,12 @@ export class Position {
 
   clone(): Position {
     return new Position(this.#x, this.#y);
+  }
+
+  static parse(cell: Cell): Position {
+    const x = "abcdefgh".indexOf(cell[0]);
+    const y = 8 - Number(cell[1]);
+    return new Position(x, y);
   }
 }
 

@@ -1,4 +1,4 @@
-import type { Position } from "src/position.ts";
+import type { Position } from "../position.ts";
 
 export class BoardInvalidPosition extends Error {
   constructor(readonly position: Position) {

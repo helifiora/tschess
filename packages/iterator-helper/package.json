@@ -1,0 +1,6 @@
+{
+  "name": "@tschess/iterator-helper",
+  "description": "",
+  "type": "module",
+  "main": "src/index.ts"
+}

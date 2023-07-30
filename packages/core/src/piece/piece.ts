@@ -1,12 +1,13 @@
-import type { Color } from "../color.ts";
+import { pipe, Color } from "@tschess/shared";
+import { some } from "@tschess/iterator-helper";
 import type { Position } from "../position.ts";
 import type { Board } from "../board/board.ts";
-import { iter } from "../iter.ts";
 
 export abstract class Piece {
-  readonly color: Color;
   #moveCount: number;
   #position: Position;
+
+  readonly color: Color;
 
   constructor(color: Color, position: Position);
   constructor(color: Color, position: Position, moveCount: number);
@@ -28,7 +29,10 @@ export abstract class Piece {
   }
 
   canMoveTo(board: Board, target: Position): boolean {
-    return iter(this.movements(board)).some((p) => p.equals(target));
+    return pipe(
+      this.movements(board),
+      some((position) => position.equals(target))
+    );
   }
 
   incrementMoveCount(amount: number = 1): void {

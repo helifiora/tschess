@@ -1,13 +1,12 @@
 import { Table } from "./table.ts";
-import type { Position } from "src/position.ts";
-import { pos } from "src/position.ts";
-import { Color, colorInvert } from "src/color.ts";
-import { King, type Piece } from "src/piece/mod.ts";
+import { pos, Position } from "../position.ts";
+import type { Piece } from "../piece/piece.ts";
+import { King } from "../piece/king.ts";
 import { BoardMultipleKingFound, BoardNoKingFound } from "./errors.ts";
-import { createPieceFromRaw, parsePieceToRaw, RawPiece } from "../piece/raw.ts";
-import { Cell } from "../cell.ts";
-import { iter } from "../iter.ts";
+import { createPieceFromRaw, parsePieceToRaw } from "../piece/raw.ts";
 import { PieceFactory } from "../piece/factory.ts";
+import { type Cell, Color, colorInvert, pipe, type RawPiece } from "@tschess/shared";
+import { filter, flatMap, map, some, toArray, toObject } from "@tschess/iterator-helper";
 
 export class Board {
   readonly #table: Table;
@@ -26,9 +25,11 @@ export class Board {
   }
 
   getKing(color: Color): King {
-    const result = iter(this.#pieces)
-      .filter((piece) => piece instanceof King && piece.color === color)
-      .toArray() as King[];
+    const result = pipe(
+      this.#pieces,
+      filter((piece) => piece instanceof King && piece.color === color),
+      toArray()
+    ) as unknown as King[];
 
     if (result.length === 0) {
       throw new BoardNoKingFound();
@@ -44,9 +45,11 @@ export class Board {
   }
 
   getTeamPieces(color: Color): Piece[] {
-    return iter(this.#pieces)
-      .filter((piece) => piece.color === color)
-      .toArray();
+    return pipe(
+      this.#pieces,
+      filter((piece) => piece.color === color),
+      toArray()
+    );
   }
 
   isEmpty(position: Position): boolean {
@@ -59,16 +62,26 @@ export class Board {
 
   isPieceInEnemyMoves(piece: Piece): boolean {
     const enemyTeam = colorInvert(piece.color);
-    return iter(this.#pieces)
-      .filter((piece) => piece.color === enemyTeam)
-      .flatMap((enemy) => enemy.movements(this))
-      .some((target) => target.equals(piece.position));
+    return pipe(
+      this.#pieces,
+      filter((piece) => piece.color === enemyTeam),
+      flatMap((enemy) => enemy.movements(this)),
+      some((target) => target.equals(piece.position))
+    );
   }
 
   move(piece: Piece, position: Position): RawPiece | null {
     const removedPiece = this.#removePieceFromPosition(position);
     this.#setPiece(piece, position);
     return removedPiece;
+  }
+
+  toData(): Record<Cell, RawPiece> {
+    return pipe(
+      this.#pieces,
+      map((value) => this.#transformPiece(value)),
+      toObject(({ raw, cell }) => [cell, raw])
+    );
   }
 
   #removePieceFromPosition(position: Position): RawPiece | null {
@@ -90,6 +103,13 @@ export class Board {
     piece.position = position;
   }
 
+  #transformPiece(piece: Piece): { raw: RawPiece; cell: Cell } {
+    return {
+      raw: parsePieceToRaw(piece),
+      cell: piece.position.toCell(),
+    };
+  }
+
   get #pieces(): Iterable<Piece> {
     return this.#table.generatePiece();
   }
@@ -98,11 +118,11 @@ export class Board {
     return new Board(Table.empty());
   }
 
-  static create(pieces: Map<RawPiece, Cell>): Board {
+  static create(pieces: Partial<Record<Cell, RawPiece>>): Board {
     const board = Board.empty();
 
-    for (const [raw, cell] of pieces) {
-      const position = cell.toPosition();
+    for (const [cell, raw] of Object.entries(pieces)) {
+      const position = Position.parse(cell as Cell);
       const piece = createPieceFromRaw(raw, position);
       board.#table.put(piece, position);
     }

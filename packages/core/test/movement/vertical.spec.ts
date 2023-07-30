@@ -1,10 +1,10 @@
 import { beforeEach, expect, test } from "vitest";
-import { Board } from "src/board/mod";
-import { Color, colorInvert } from "src/color";
-import { Vertical } from "src/movement/vertical";
-import { Direction } from "src/direction";
-import { pos, Position } from "src/position";
-import { MovementStatus } from "../../src/movement/movement";
+import { Board } from "src/board/board.ts";
+import { Color, colorInvert } from "@tschess/shared";
+import { Vertical } from "src/movement/vertical.ts";
+import { Direction } from "src/direction.ts";
+import { pos, Position } from "src/position.ts";
+import { MovementStatus } from "src/movement/movement.ts";
 
 function positionsToString(values: Position[]): string {
   return values

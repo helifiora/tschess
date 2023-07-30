@@ -1,10 +1,10 @@
 import { Piece } from "./piece.ts";
-import { CommonAcceptanceFn } from "../movement/common.ts";
 import { MovementStatus } from "../movement/movement.ts";
 import { createMovementBuilder } from "../movement/builder.ts";
+import type { CommonAcceptanceFn } from "../movement/common.ts";
 import type { Position } from "../position.ts";
 import type { Board } from "../board/board.ts";
-import { colorToDirection } from "../color.ts";
+import { colorToDirection } from "../direction.ts";
 
 export class Pawn extends Piece {
   clone = (): Piece => new Pawn(this);
@@ -29,11 +29,7 @@ export class Pawn extends Piece {
     return this.moveCount === 0 ? 2 : 1;
   }
 
-  static #acceptanceDiagonalFn: CommonAcceptanceFn = (
-    board,
-    origin,
-    target
-  ) => {
+  static #acceptanceDiagonalFn: CommonAcceptanceFn = (_, origin, target) => {
     if (target.piece === null || target.piece.color === origin.piece.color) {
       return MovementStatus.stop;
     }
@@ -41,11 +37,7 @@ export class Pawn extends Piece {
     return MovementStatus.next;
   };
 
-  static #acceptanceVerticalFn: CommonAcceptanceFn = (
-    board,
-    origin,
-    target
-  ) => {
+  static #acceptanceVerticalFn: CommonAcceptanceFn = (board, origin, target) => {
     if (target.piece !== null) {
       return MovementStatus.stop;
     }
