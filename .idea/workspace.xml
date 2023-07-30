@@ -4,12 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="feat: finalize basic prototype web and functionalities">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apps/web/src/App.vue" beforeDir="false" afterPath="$PROJECT_DIR$/apps/web/src/App.vue" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/piece/pawn.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/usecase/get-piece-moves.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/usecase/get-piece-moves.ts" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/packages/core/src/usecase/move-piece.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/core/src/usecase/move-piece.ts" afterDir="false" />
+    <list default="true" id="83889578-bc3b-4af7-bb4a-88b7d630274c" name="Changes" comment="refactor: remove unused code">
+      <change beforePath="$PROJECT_DIR$/packages/shared/test/generator.spec.ts" beforeDir="false" afterPath="$PROJECT_DIR$/packages/shared/test/generator.spec.ts" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -105,7 +101,7 @@
       <recent name="C:\Users\helif\Labs\tschess\packages\core\src\application\usecase" />
     </key>
   </component>
-  <component name="RunManager" selected="Vitest.Tests in test\">
+  <component name="RunManager" selected="Vitest.Tests in test\ (1)">
     <configuration name="Should move piece from origin to destiny" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -142,6 +138,16 @@
       <test-directory value="$PROJECT_DIR$/packages/core/test/game" />
       <method v="2" />
     </configuration>
+    <configuration name="Tests in test\ (1)" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
+      <node-interpreter value="project" />
+      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
+      <working-dir value="$PROJECT_DIR$/packages/shared" />
+      <vitest-options value="--run" />
+      <envs />
+      <scope-kind value="DIRECTORY" />
+      <test-directory value="$PROJECT_DIR$/packages/shared/test" />
+      <method v="2" />
+    </configuration>
     <configuration name="Tests in test\" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
       <node-interpreter value="project" />
       <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
@@ -152,23 +158,13 @@
       <test-directory value="$PROJECT_DIR$/packages/core/test" />
       <method v="2" />
     </configuration>
-    <configuration name="board.spec.ts" type="JavaScriptTestRunnerVitest" temporary="true" nameIsGenerated="true">
-      <node-interpreter value="project" />
-      <vitest-package value="$PROJECT_DIR$/node_modules/vitest" />
-      <working-dir value="$PROJECT_DIR$/packages/core" />
-      <vitest-options value="--run" />
-      <envs />
-      <scope-kind value="TEST_FILE" />
-      <test-file value="$PROJECT_DIR$/packages/core/test/board/board.spec.ts" />
-      <method v="2" />
-    </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="Vitest.Tests in test\ (1)" />
         <item itemvalue="Vitest.Tests in test\" />
         <item itemvalue="Vitest.Should move piece from origin to destiny" />
         <item itemvalue="Vitest.Should piece not have moves if team king will be in check" />
         <item itemvalue="Vitest.Tests in game\" />
-        <item itemvalue="Vitest.board.spec.ts" />
       </list>
     </recent_temporary>
   </component>
@@ -260,7 +256,7 @@
       <workItem from="1690423781294" duration="3670000" />
       <workItem from="1690692604659" duration="3652000" />
       <workItem from="1690696935905" duration="65000" />
-      <workItem from="1690730307404" duration="285000" />
+      <workItem from="1690730307404" duration="378000" />
     </task>
     <task id="LOCAL-00001" summary="feat: table and board implementation and test">
       <option name="closed" value="true" />
@@ -310,7 +306,15 @@
       <option name="project" value="LOCAL" />
       <updated>1690695465678</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="refactor: remove unused code">
+      <option name="closed" value="true" />
+      <created>1690730652963</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1690730652963</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -334,7 +338,8 @@
     <MESSAGE value="feat: implementation movements, board and piece" />
     <MESSAGE value="fix: board move() return" />
     <MESSAGE value="feat: finalize basic prototype web and functionalities" />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: finalize basic prototype web and functionalities" />
+    <MESSAGE value="refactor: remove unused code" />
+    <option name="LAST_COMMIT_MESSAGE" value="refactor: remove unused code" />
   </component>
   <component name="VueSettings">
     <option name="innerServiceType" value="DISABLED" />
